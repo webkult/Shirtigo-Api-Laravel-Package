@@ -1,0 +1,176 @@
+# Laravel Shirtigo Wrapper - Project Intelligence
+
+## Projekt-Übersicht
+Laravel Wrapper für die Shirtigo PHP API SDK mit Fokus auf Laravel-spezifische Integration und Developer Experience.
+
+## Architektur-Patterns
+
+### Service Layer Pattern
+- Hauptservice: `ShirtigoService` implementiert `ShirtigoServiceInterface`
+- API-spezifische Services: `OrderService`, `ProductService`, `DesignService`, etc.
+- Base Service: `BaseApiService` für gemeinsame Funktionalität
+
+### Facade Pattern
+- `Shirtigo` Facade für einfachen Zugriff
+- Methoden-Chaining: `Shirtigo::orders()->getAll()`
+- IDE-Unterstützung durch PHPDoc
+
+### Repository Pattern
+- Services fungieren als Repository für API-Operationen
+- Abstraktion der Shirtigo SDK
+- Einheitliche API für alle Endpoints
+
+## Code-Standards
+
+### PSR-12 Compliance
+- 4 Spaces Einrückung
+- PSR-4 Autoloading
+- Type Declarations für alle Parameter und Rückgabewerte
+- Strict Types aktiviert
+
+### SOLID Principles
+- **SRP**: Jeder Service hat eine einzige Verantwortlichkeit
+- **OCP**: Erweiterbar durch neue Services
+- **LSP**: Services sind austauschbar
+- **ISP**: Spezifische Interfaces für Services
+- **DIP**: Abhängigkeit von Abstraktionen
+
+### Laravel Best Practices
+- Service Provider für Dependency Injection
+- Facade für einfachen Zugriff
+- Artisan Commands für CLI-Operationen
+- Eloquent-ähnliche Models
+- Laravel-spezifische Exceptions
+
+## Wichtige Dateien
+
+### Core Services
+- `src/Services/ShirtigoService.php` - Hauptservice
+- `src/Services/Api/BaseApiService.php` - Basis für alle API Services
+- `src/Services/Api/*Service.php` - API-spezifische Services
+
+### Laravel Integration
+- `src/Providers/ShirtigoServiceProvider.php` - Service Provider
+- `src/Facades/Shirtigo.php` - Facade
+- `config/shirtigo.php` - Konfiguration
+
+### Models
+- `src/Models/BaseModel.php` - Basis für alle Models
+- `src/Models/Order.php` - Order Model mit Eloquent-ähnlicher API
+- `src/Models/OrderProduct.php` - OrderProduct Model
+
+### Error Handling
+- `src/Exceptions/ShirtigoException.php` - Haupt-Exception
+- `src/Exceptions/ApiException.php` - API-spezifische Exception
+
+## Konfiguration
+
+### Environment Variables
+```env
+SHIRTIGO_API_KEY=your_api_key
+SHIRTIGO_BASE_URL=https://cockpit.shirtigo.com/api/
+SHIRTIGO_CACHE_ENABLED=true
+SHIRTIGO_CACHE_TTL=3600
+SHIRTIGO_RETRY_ATTEMPTS=3
+SHIRTIGO_LOGGING_ENABLED=true
+```
+
+### Caching-Strategie
+- Automatisches Caching für GET-Requests
+- Konfigurierbare TTL
+- Cache-Prefix für Namespace
+- Cache-Invalidation bei Updates
+
+### Error Handling
+- Retry-Mechanismus mit konfigurierbaren Versuchen
+- Laravel-spezifische Exceptions
+- Logging-Integration
+- HTTP-Status-Code-Mapping
+
+## Testing-Strategie
+
+### Unit Tests
+- Service-Tests mit Mocks
+- Facade-Tests
+- Model-Tests
+
+### Feature Tests
+- Integration mit Laravel
+- End-to-End API-Tests
+- Command-Tests
+
+### Test-Utilities
+- `tests/TestCase.php` - Basis für alle Tests
+- Orchestra Testbench für Laravel-Integration
+- Mock-Integration für externe APIs
+
+## Entwicklungsworkflow
+
+### Neue API-Services hinzufügen
+1. Service in `src/Services/Api/` erstellen
+2. Von `BaseApiService` erben
+3. Interface in `ShirtigoServiceInterface` hinzufügen
+4. Service in `ShirtigoService` registrieren
+5. Tests schreiben
+
+### Neue Models hinzufügen
+1. Model in `src/Models/` erstellen
+2. Von `BaseModel` erben
+3. Getter-Methoden implementieren
+4. `fromArray()` und `fromCollection()` Methoden
+
+### Commands hinzufügen
+1. Command in `src/Commands/` erstellen
+2. In `ShirtigoServiceProvider` registrieren
+3. Tests schreiben
+
+## Bekannte Patterns
+
+### API-Response-Handling
+- Alle Services verwenden `handleResponse()` für einheitliche Behandlung
+- Caching über `executeWithCache()` für GET-Requests
+- Retry-Mechanismus über `executeWithRetry()`
+
+### Model-Erstellung
+- `fromArray()` für einzelne Models
+- `fromCollection()` für Collections
+- Getter-Methoden für bessere API
+
+### Error-Handling
+- `ShirtigoException` für allgemeine Fehler
+- `ApiException` für API-spezifische Fehler
+- Status-Code-Mapping
+
+## Performance-Optimierungen
+
+### Caching
+- Response-Caching für GET-Requests
+- Konfigurierbare TTL
+- Cache-Tags für Invalidation
+
+### Retry-Mechanismus
+- Konfigurierbare Versuche
+- Exponential Backoff
+- Logging von Fehlern
+
+### Memory-Management
+- Singleton-Pattern für Services
+- Lazy Loading von Services
+- Effiziente Collection-Handling
+
+## Erweiterungsmöglichkeiten
+
+### Webhook-Integration
+- Webhook-Service für Incoming-Webhooks
+- Event-Listener für Webhook-Events
+- Webhook-Validation
+
+### Rate Limiting
+- Rate-Limiting-Service
+- Queue-Integration für Batch-Requests
+- Throttling-Mechanismen
+
+### Batch-Operationen
+- Batch-Service für mehrere Operationen
+- Parallel-Processing
+- Progress-Tracking
