@@ -1,0 +1,176 @@
+# Laravel Shirtigo Wrapper - Project Intelligence
+
+## Project Overview
+Laravel wrapper for the Shirtigo PHP API SDK with focus on Laravel-specific integration and developer experience.
+
+## Architecture Patterns
+
+### Service Layer Pattern
+- Main service: `ShirtigoService` implements `ShirtigoServiceInterface`
+- API-specific services: `OrderService`, `ProductService`, `DesignService`, etc.
+- Base service: `BaseApiService` for common functionality
+
+### Facade Pattern
+- `Shirtigo` Facade for easy access
+- Method chaining: `Shirtigo::orders()->getAll()`
+- IDE support through PHPDoc
+
+### Repository Pattern
+- Services act as repositories for API operations
+- Abstraction of the Shirtigo SDK
+- Unified API for all endpoints
+
+## Code Standards
+
+### PSR-12 Compliance
+- 4 spaces indentation
+- PSR-4 autoloading
+- Type declarations for all parameters and return values
+- Strict types enabled
+
+### SOLID Principles
+- **SRP**: Each service has a single responsibility
+- **OCP**: Extensible through new services
+- **LSP**: Services are interchangeable
+- **ISP**: Specific interfaces for services
+- **DIP**: Dependency on abstractions
+
+### Laravel Best Practices
+- Service Provider for dependency injection
+- Facade for easy access
+- Artisan Commands for CLI operations
+- Eloquent-like models
+- Laravel-specific exceptions
+
+## Important Files
+
+### Core Services
+- `src/Services/ShirtigoService.php` - Main service
+- `src/Services/Api/BaseApiService.php` - Base for all API services
+- `src/Services/Api/*Service.php` - API-specific services
+
+### Laravel Integration
+- `src/Providers/ShirtigoServiceProvider.php` - Service Provider
+- `src/Facades/Shirtigo.php` - Facade
+- `config/shirtigo.php` - Configuration
+
+### Models
+- `src/Models/BaseModel.php` - Base for all models
+- `src/Models/Order.php` - Order model with Eloquent-like API
+- `src/Models/OrderProduct.php` - OrderProduct model
+
+### Error Handling
+- `src/Exceptions/ShirtigoException.php` - Main exception
+- `src/Exceptions/ApiException.php` - API-specific exception
+
+## Configuration
+
+### Environment Variables
+```env
+SHIRTIGO_API_KEY=your_api_key
+SHIRTIGO_BASE_URL=https://cockpit.shirtigo.com/api/
+SHIRTIGO_CACHE_ENABLED=true
+SHIRTIGO_CACHE_TTL=3600
+SHIRTIGO_RETRY_ATTEMPTS=3
+SHIRTIGO_LOGGING_ENABLED=true
+```
+
+### Caching Strategy
+- Automatic caching for GET requests
+- Configurable TTL
+- Cache prefix for namespace
+- Cache invalidation on updates
+
+### Error Handling
+- Retry mechanism with configurable attempts
+- Laravel-specific exceptions
+- Logging integration
+- HTTP status code mapping
+
+## Testing Strategy
+
+### Unit Tests
+- Service tests with mocks
+- Facade tests
+- Model tests
+
+### Feature Tests
+- Integration with Laravel
+- End-to-end API tests
+- Command tests
+
+### Test Utilities
+- `tests/TestCase.php` - Base for all tests
+- Orchestra Testbench for Laravel integration
+- Mock integration for external APIs
+
+## Development Workflow
+
+### Adding New API Services
+1. Create service in `src/Services/Api/`
+2. Extend from `BaseApiService`
+3. Add interface to `ShirtigoServiceInterface`
+4. Register service in `ShirtigoService`
+5. Write tests
+
+### Adding New Models
+1. Create model in `src/Models/`
+2. Extend from `BaseModel`
+3. Implement getter methods
+4. Add `fromArray()` and `fromCollection()` methods
+
+### Adding Commands
+1. Create command in `src/Commands/`
+2. Register in `ShirtigoServiceProvider`
+3. Write tests
+
+## Known Patterns
+
+### API Response Handling
+- All services use `handleResponse()` for unified handling
+- Caching via `executeWithCache()` for GET requests
+- Retry mechanism via `executeWithRetry()`
+
+### Model Creation
+- `fromArray()` for single models
+- `fromCollection()` for collections
+- Getter methods for better API
+
+### Error Handling
+- `ShirtigoException` for general errors
+- `ApiException` for API-specific errors
+- Status code mapping
+
+## Performance Optimizations
+
+### Caching
+- Response caching for GET requests
+- Configurable TTL
+- Cache tags for invalidation
+
+### Retry Mechanism
+- Configurable attempts
+- Exponential backoff
+- Error logging
+
+### Memory Management
+- Singleton pattern for services
+- Lazy loading of services
+- Efficient collection handling
+
+## Extension Possibilities
+
+### Webhook Integration
+- Webhook service for incoming webhooks
+- Event listeners for webhook events
+- Webhook validation
+
+### Rate Limiting
+- Rate limiting service
+- Queue integration for batch requests
+- Throttling mechanisms
+
+### Batch Operations
+- Batch service for multiple operations
+- Parallel processing
+- Progress tracking
