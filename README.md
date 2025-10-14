@@ -253,7 +253,12 @@ return [
 
 ## License
 
-MIT
+GPL-3.0
+
+## Author
+
+**Benjamin Klein**  
+Email: info@webkult.de
 
 ## Support
 
