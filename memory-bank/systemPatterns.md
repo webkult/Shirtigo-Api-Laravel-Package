@@ -1,6 +1,6 @@
 # System Patterns: Laravel Shirtigo Wrapper
 
-## Architektur
+## Architecture
 
 ### Service Layer Pattern
 ```php
@@ -17,9 +17,9 @@ Shirtigo::orders()->getAll();
 ```
 
 ### Service Provider Pattern
-- `ShirtigoServiceProvider` für Laravel-Integration
-- Singleton-Binding für API-Client
-- Konfigurationspublishing
+- `ShirtigoServiceProvider` for Laravel integration
+- Singleton binding for API client
+- Configuration publishing
 
 ### Repository Pattern
 ```php
@@ -33,18 +33,18 @@ interface ShirtigoRepositoryInterface
 ## Design Patterns
 
 ### Adapter Pattern
-- Wrapper um die bestehende Shirtigo SDK
-- Laravel-spezifische Anpassungen
+- Wrapper around the existing Shirtigo SDK
+- Laravel-specific adaptations
 
 ### Factory Pattern
-- API-Client Factory
-- Model Factory für Responses
+- API client factory
+- Model factory for responses
 
 ### Strategy Pattern
-- Verschiedene Authentifizierungsstrategien
-- Caching-Strategien
+- Different authentication strategies
+- Caching strategies
 
-## Datenfluss
+## Data Flow
 
 ```mermaid
 flowchart TD
@@ -60,13 +60,13 @@ flowchart TD
 ```
 
 ## Error Handling
-- Laravel-spezifische Exceptions
-- HTTP-Status-Code-Mapping
-- Retry-Mechanismen
-- Logging-Integration
+- Laravel-specific exceptions
+- HTTP status code mapping
+- Retry mechanisms
+- Logging integration
 
 ## Caching
-- Response-Caching
-- Konfigurierbare TTL
-- Cache-Tags für Invalidation
-- Laravel Cache-Integration
+- Response caching
+- Configurable TTL
+- Cache tags for invalidation
+- Laravel cache integration

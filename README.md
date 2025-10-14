@@ -1,6 +1,6 @@
 # Laravel Shirtigo Wrapper
 
-Ein Laravel Wrapper für die Shirtigo PHP API SDK, der die Integration von Shirtigo-Diensten in Laravel-Anwendungen vereinfacht.
+A Laravel wrapper for the Shirtigo PHP API SDK that simplifies the integration of Shirtigo services into Laravel applications.
 
 ## Installation
 
@@ -8,15 +8,15 @@ Ein Laravel Wrapper für die Shirtigo PHP API SDK, der die Integration von Shirt
 composer require laravel-shirtigo/wrapper
 ```
 
-## Konfiguration
+## Configuration
 
-Publiziere die Konfigurationsdatei:
+Publish the configuration file:
 
 ```bash
 php artisan vendor:publish --tag=shirtigo-config
 ```
 
-Konfiguriere deine Umgebungsvariablen in der `.env`-Datei:
+Configure your environment variables in the `.env` file:
 
 ```env
 SHIRTIGO_API_KEY=your_api_key_here
@@ -27,23 +27,23 @@ SHIRTIGO_RETRY_ATTEMPTS=3
 SHIRTIGO_LOGGING_ENABLED=true
 ```
 
-## Verwendung
+## Usage
 
-### Facade verwenden
+### Using the Facade
 
 ```php
 use LaravelShirtigo\Facades\Shirtigo;
 
-// Bestellungen abrufen
+// Get all orders
 $orders = Shirtigo::orders()->getAll();
 
-// Einzelne Bestellung abrufen
+// Get single order
 $order = Shirtigo::orders()->get('ORDER-123');
 
-// Produkte abrufen
+// Get all products
 $products = Shirtigo::products()->getAll();
 
-// Design erstellen
+// Create design
 $design = Shirtigo::designs()->createFromFile('/path/to/design.png');
 ```
 
@@ -71,72 +71,72 @@ class OrderController extends Controller
 ### Order Service
 
 ```php
-// Alle Bestellungen abrufen
+// Get all orders
 $orders = Shirtigo::orders()->getAll(
     page: 1,
-    filter: 1, // Status-Filter
+    filter: 1, // Status filter
     items: 50,
-    search: 'Suchbegriff'
+    search: 'search term'
 );
 
-// Bestellung erstellen
+// Create order
 $order = Shirtigo::orders()->create([
     'customer' => [...],
     'products' => [...],
     'delivery_address' => [...]
 ]);
 
-// Bestellung stornieren
+// Cancel order
 Shirtigo::orders()->cancel('ORDER-123');
 
-// Zahlung wiederholen
+// Retry payment
 Shirtigo::orders()->retryPayment('ORDER-123');
 ```
 
 ### Product Service
 
 ```php
-// Alle Produkte abrufen
+// Get all products
 $products = Shirtigo::products()->getAll();
 
-// Produkt erstellen
+// Create product
 $product = Shirtigo::products()->create([
     'name' => 'T-Shirt',
-    'description' => 'Ein cooles T-Shirt',
+    'description' => 'A cool T-Shirt',
     'base_product_id' => 123
 ]);
 
-// Produkt aktualisieren
+// Update product
 Shirtigo::products()->update(123, [
-    'name' => 'Aktualisierter Name'
+    'name' => 'Updated Name'
 ]);
 ```
 
 ### Design Service
 
 ```php
-// Design aus Datei erstellen
+// Create design from file
 $design = Shirtigo::designs()->createFromFile('/path/to/design.png', [
-    'name' => 'Mein Design'
+    'name' => 'My Design'
 ]);
 
-// Design aus URL erstellen
+// Create design from URL
 $design = Shirtigo::designs()->createFromUrl('https://example.com/design.png');
 
-// Design aus Base64 erstellen
+// Create design from Base64
 $design = Shirtigo::designs()->createFromBase64($base64Data);
 ```
 
 ### Image Service
 
 ```php
-// Mockup-Bilder generieren
+// Generate mockup images
 $mockups = Shirtigo::images()->generateMockupImages([
     'product_id' => 123,
     'design_id' => 456
 ]);
 
-// Hintergrund entfernen
+// Remove background
 $result = Shirtigo::images()->removeBackground([
     'image_url' => 'https://example.com/image.png'
 ]);
@@ -144,7 +144,7 @@ $result = Shirtigo::images()->removeBackground([
 
 ## Models
 
-Der Wrapper bietet Eloquent-ähnliche Models für API-Responses:
+The wrapper provides Eloquent-like models for API responses:
 
 ```php
 use LaravelShirtigo\Models\Order;
@@ -153,7 +153,7 @@ $order = Order::fromArray($orderData);
 
 echo $order->getReference();
 echo $order->getTotalPrice();
-echo $order->isPaid() ? 'Bezahlt' : 'Nicht bezahlt';
+echo $order->isPaid() ? 'Paid' : 'Not paid';
 
 $products = $order->getProducts();
 foreach ($products as $product) {
@@ -163,13 +163,13 @@ foreach ($products as $product) {
 
 ## Artisan Commands
 
-### Produkte synchronisieren
+### Sync products
 
 ```bash
 php artisan shirtigo:sync-products --limit=100 --force
 ```
 
-### Bestellungen synchronisieren
+### Sync orders
 
 ```bash
 php artisan shirtigo:sync-orders --status=1 --limit=50 --page=1
@@ -177,14 +177,14 @@ php artisan shirtigo:sync-orders --status=1 --limit=50 --page=1
 
 ## Caching
 
-Der Wrapper unterstützt automatisches Caching von API-Responses:
+The wrapper supports automatic caching of API responses:
 
 ```php
-// Caching ist standardmäßig aktiviert
-$products = Shirtigo::products()->getAll(); // Wird gecacht
+// Caching is enabled by default
+$products = Shirtigo::products()->getAll(); // Will be cached
 
-// Cache für bestimmte Anfrage deaktivieren
-$products = Shirtigo::products()->getAll(); // Ohne Cache
+// Disable cache for specific request
+$products = Shirtigo::products()->getAll(); // Without cache
 ```
 
 ## Error Handling
@@ -195,18 +195,18 @@ use LaravelShirtigo\Exceptions\ShirtigoException;
 try {
     $orders = Shirtigo::orders()->getAll();
 } catch (ShirtigoException $e) {
-    // API-Fehler behandeln
-    echo 'Fehler: ' . $e->getMessage();
+    // Handle API error
+    echo 'Error: ' . $e->getMessage();
     echo 'Status Code: ' . $e->getStatusCode();
 }
 ```
 
 ## Logging
 
-API-Aufrufe werden automatisch geloggt (wenn aktiviert):
+API calls are automatically logged (when enabled):
 
 ```php
-// In der Konfiguration
+// In configuration
 'logging' => [
     'enabled' => true,
     'channel' => 'default',
@@ -219,9 +219,9 @@ API-Aufrufe werden automatisch geloggt (wenn aktiviert):
 composer test
 ```
 
-## Konfiguration
+## Configuration
 
-Die vollständige Konfiguration findest du in der `config/shirtigo.php`-Datei:
+The complete configuration can be found in the `config/shirtigo.php` file:
 
 ```php
 return [
@@ -251,10 +251,10 @@ return [
 ];
 ```
 
-## Lizenz
+## License
 
 MIT
 
 ## Support
 
-Bei Fragen oder Problemen erstelle bitte ein Issue im GitHub Repository.
+For questions or issues, please create an issue in the GitHub repository.

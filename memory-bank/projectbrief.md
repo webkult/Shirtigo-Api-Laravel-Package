@@ -1,26 +1,26 @@
-# Project Brief: Laravel Wrapper für Shirtigo PHP SDK
+# Project Brief: Laravel Wrapper for Shirtigo PHP SDK
 
-## Ziel
-Entwicklung eines Laravel Wrappers für die Shirtigo PHP API, um die Integration der Shirtigo-Dienste in Laravel-Anwendungen zu vereinfachen.
+## Goal
+Development of a Laravel wrapper for the Shirtigo PHP API to simplify the integration of Shirtigo services into Laravel applications.
 
-## Kernfunktionen
-- Laravel Service Provider für einfache Integration
-- Facade für bequeme API-Zugriffe
-- Konfigurationsdatei für API-Credentials
-- Artisan Commands für häufige Operationen
-- Eloquent-ähnliche Modelle für API-Responses
-- Error Handling und Logging
-- Caching-Unterstützung
+## Core Features
+- Laravel Service Provider for easy integration
+- Facade for convenient API access
+- Configuration file for API credentials
+- Artisan Commands for common operations
+- Eloquent-like models for API responses
+- Error handling and logging
+- Caching support
 
-## Technische Anforderungen
-- PHP 8.1+ (entsprechend Laravel 10+)
+## Technical Requirements
+- PHP 8.1+ (compatible with Laravel 10+)
 - Laravel 10+ Support
 - PSR-12 Code Standard
 - SOLID Design Principles
-- Vollständige Testabdeckung
-- Dokumentation
+- Complete test coverage
+- Documentation
 
-## Projektstruktur
+## Project Structure
 ```
 laravel-shirtigo-wrapper/
 ├── src/
@@ -34,9 +34,9 @@ laravel-shirtigo-wrapper/
 └── docs/
 ```
 
-## Erfolgskriterien
-- Einfache Installation und Konfiguration
-- Intuitive API für Laravel-Entwickler
-- Vollständige Abdeckung der Shirtigo API
-- Robuste Fehlerbehandlung
-- Umfassende Dokumentation
+## Success Criteria
+- Easy installation and configuration
+- Intuitive API for Laravel developers
+- Complete coverage of Shirtigo API
+- Robust error handling
+- Comprehensive documentation

@@ -1,51 +1,51 @@
 # Active Context: Laravel Shirtigo Wrapper
 
-## Aktueller Fokus
-Entwicklung eines Laravel Wrappers für die Shirtigo PHP SDK mit Fokus auf:
-- Laravel-spezifische Integration
-- Einfache API für Entwickler
-- Robuste Fehlerbehandlung
-- Umfassende Testabdeckung
+## Current Focus
+Development of a Laravel wrapper for the Shirtigo PHP SDK with focus on:
+- Laravel-specific integration
+- Simple API for developers
+- Robust error handling
+- Comprehensive test coverage
 
-## Nächste Schritte
-1. **Projektstruktur erstellen**
-   - Composer.json mit Dependencies
-   - Grundlegende Ordnerstruktur
-   - PSR-4 Autoloading
+## Next Steps
+1. **Create project structure**
+   - Composer.json with dependencies
+   - Basic folder structure
+   - PSR-4 autoloading
 
-2. **Core Services entwickeln**
-   - ShirtigoService als Hauptservice
-   - API-spezifische Services (Order, Product, Design)
-   - Repository Pattern implementieren
+2. **Develop core services**
+   - ShirtigoService as main service
+   - API-specific services (Order, Product, Design)
+   - Implement repository pattern
 
-3. **Laravel Integration**
-   - Service Provider erstellen
-   - Facade implementieren
-   - Konfigurationsdatei
+3. **Laravel integration**
+   - Create service provider
+   - Implement facade
+   - Configuration file
 
-4. **Models und DTOs**
-   - Eloquent-ähnliche Models
-   - Data Transfer Objects
-   - Response-Mapping
+4. **Models and DTOs**
+   - Eloquent-like models
+   - Data transfer objects
+   - Response mapping
 
-5. **Error Handling**
-   - Custom Exceptions
-   - HTTP-Status-Mapping
-   - Retry-Mechanismen
+5. **Error handling**
+   - Custom exceptions
+   - HTTP status mapping
+   - Retry mechanisms
 
 6. **Testing**
-   - Unit Tests
-   - Feature Tests
-   - Mock-Integration
+   - Unit tests
+   - Feature tests
+   - Mock integration
 
-## Aktuelle Entscheidungen
-- Verwendung der bestehenden Shirtigo SDK als Basis
-- Laravel 10+ als Mindestversion
-- PSR-12 Code Standard
-- SOLID Design Principles
+## Current Decisions
+- Use existing Shirtigo SDK as base
+- Laravel 10+ as minimum version
+- PSR-12 code standard
+- SOLID design principles
 
-## Offene Fragen
-- Caching-Strategie für API-Responses
-- Artisan Commands für häufige Operationen
-- Webhook-Integration
-- Dokumentationsformat
+## Open Questions
+- Caching strategy for API responses
+- Artisan commands for common operations
+- Webhook integration
+- Documentation format

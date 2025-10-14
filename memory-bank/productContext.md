@@ -1,41 +1,41 @@
 # Product Context: Laravel Shirtigo Wrapper
 
 ## Problem
-Die Shirtigo PHP SDK ist eine generische PHP-Bibliothek, die nicht speziell für Laravel optimiert ist. Laravel-Entwickler benötigen:
-- Laravel-spezifische Integration (Service Provider, Facades)
-- Konfigurationsmanagement über Laravel Config
-- Artisan Commands für CLI-Operationen
-- Eloquent-ähnliche Modelle für bessere DX
-- Laravel-spezifisches Error Handling und Logging
+The Shirtigo PHP SDK is a generic PHP library that is not specifically optimized for Laravel. Laravel developers need:
+- Laravel-specific integration (Service Provider, Facades)
+- Configuration management through Laravel Config
+- Artisan Commands for CLI operations
+- Eloquent-like models for better DX
+- Laravel-specific error handling and logging
 
-## Lösung
-Ein Laravel Wrapper, der:
-- Die bestehende Shirtigo SDK als Basis nutzt
-- Laravel-spezifische Features hinzufügt
-- Eine intuitive, Laravel-ähnliche API bereitstellt
-- Best Practices für Laravel-Entwicklung befolgt
+## Solution
+A Laravel wrapper that:
+- Uses the existing Shirtigo SDK as a base
+- Adds Laravel-specific features
+- Provides an intuitive, Laravel-like API
+- Follows best practices for Laravel development
 
-## Zielgruppe
-- Laravel-Entwickler, die Shirtigo-Dienste integrieren
-- E-Commerce-Entwickler
-- Print-on-Demand-Anwendungen
+## Target Audience
+- Laravel developers integrating Shirtigo services
+- E-Commerce developers
+- Print-on-Demand applications
 
-## Kern-APIs
-Basierend auf der SDK-Analyse:
-- **OrderApi**: Bestellverwaltung
-- **ProductApi**: Produktverwaltung
-- **DesignApi**: Design-Management
-- **ImageApi**: Bildverarbeitung
-- **UserApi**: Benutzerverwaltung
-- **CatalogApi**: Katalog-Zugriff
-- **BrandingApi**: Branding-Features
-- **WarehousingApi**: Lagerverwaltung
-- **WebhookApi**: Webhook-Management
-- **IntegrationApi**: Integration-Management
-- **ProjectApi**: Projektverwaltung
+## Core APIs
+Based on SDK analysis:
+- **OrderApi**: Order management
+- **ProductApi**: Product management
+- **DesignApi**: Design management
+- **ImageApi**: Image processing
+- **UserApi**: User management
+- **CatalogApi**: Catalog access
+- **BrandingApi**: Branding features
+- **WarehousingApi**: Warehouse management
+- **WebhookApi**: Webhook management
+- **IntegrationApi**: Integration management
+- **ProjectApi**: Project management
 
 ## User Experience
-- Einfache Installation: `composer require vendor/laravel-shirtigo`
-- Konfiguration: `php artisan vendor:publish --tag=shirtigo-config`
-- Verwendung: `Shirtigo::orders()->getAll()`
+- Easy installation: `composer require vendor/laravel-shirtigo`
+- Configuration: `php artisan vendor:publish --tag=shirtigo-config`
+- Usage: `Shirtigo::orders()->getAll()`
 - Artisan Commands: `php artisan shirtigo:sync-products`

@@ -1,6 +1,6 @@
 # Technical Context: Laravel Shirtigo Wrapper
 
-## Technologie-Stack
+## Technology Stack
 
 ### Core Dependencies
 - **PHP**: 8.1+ (Laravel 10+ Requirement)
@@ -14,7 +14,7 @@
 - **Rector**: Code Quality
 - **PHP CS Fixer**: Code Style
 
-## Projektstruktur
+## Project Structure
 
 ```
 laravel-shirtigo-wrapper/
@@ -51,7 +51,7 @@ laravel-shirtigo-wrapper/
     └── api-reference.md
 ```
 
-## Konfiguration
+## Configuration
 
 ### Environment Variables
 ```env
@@ -78,7 +78,7 @@ return [
 ];
 ```
 
-## API-Integration
+## API Integration
 
 ### Service Provider Registration
 ```php
@@ -103,7 +103,7 @@ class Shirtigo extends Facade
 ```
 
 ## Testing Strategy
-- Unit Tests für Services
-- Feature Tests für API-Integration
-- Mock-Tests für externe API-Calls
-- Integration Tests mit Test-API
+- Unit tests for services
+- Feature tests for API integration
+- Mock tests for external API calls
+- Integration tests with test API
