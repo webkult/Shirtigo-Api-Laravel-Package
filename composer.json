@@ -2,11 +2,11 @@
     "name": "laravel-shirtigo/wrapper",
     "description": "Laravel wrapper for the Shirtigo PHP API SDK",
     "type": "library",
-    "license": "MIT",
+    "license": "GPL-3.0",
     "authors": [
         {
-            "name": "Laravel Shirtigo Team",
-            "email": "info@laravel-shirtigo.com"
+            "name": "Benjamin Klein",
+            "email": "info@webkult.de"
         }
     ],
     "require": {
