@@ -7,7 +7,7 @@ use LaravelShirtigo\Facades\Shirtigo;
 
 class SyncProductsCommand extends Command
 {
-    protected $signature = 'shirtigo:sync-products 
+    protected $signature = 'shirtigo:sync-products
                             {--force : Force sync even if products are up to date}
                             {--limit=100 : Limit number of products to sync}';
 
@@ -37,10 +37,10 @@ class SyncProductsCommand extends Command
             $bar->start();
 
             $synced = 0;
+            dd($products);
             foreach ($products as $productData) {
                 try {
-                    // Hier würde die eigentliche Sync-Logik stehen
-                    // z.B. Speicherung in lokaler Datenbank
+                    dump($productData);
                     $synced++;
                 } catch (\Exception $e) {
                     $this->error("Failed to sync product {$productData['id']}: " . $e->getMessage());

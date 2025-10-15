@@ -45,7 +45,7 @@ abstract class BaseApiService
         for ($i = 0; $i < $attempts; $i++) {
             try {
                 $response = $callback();
-                
+
                 if ($this->loggingEnabled) {
                     Log::channel(config('shirtigo.logging.channel', 'default'))
                         ->info('Shirtigo API call successful', [
@@ -65,7 +65,7 @@ abstract class BaseApiService
                                 'error' => $e->getMessage(),
                             ]);
                     }
-                    
+
                     throw new ShirtigoException(
                         'API call failed after ' . $attempts . ' attempts: ' . $e->getMessage(),
                         0,
